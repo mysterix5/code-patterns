@@ -8,18 +8,19 @@
 		<version>2.7.0</version>
 		<relativePath/>
 	</parent>
-	<groupId>com.github.gossie</groupId>
-	<artifactId>spring-boot-react-bundle-parent</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-react-bundle-parent</name>
+	<groupId>com.github.mysterix5</groupId>
+	<artifactId>template-parent</artifactId>
+	<version>0.0.1</version>
+	<name>template-parent</name>
 	<packaging>pom</packaging>
-	
+
 	<properties>
 		<java.version>17</java.version>
+		<executable.name>template</executable.name>
 	</properties>
-	
+
 	<modules>
 		<module>backend</module>
 	</modules>
-	
+
 </project>
