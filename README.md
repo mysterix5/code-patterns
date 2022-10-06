@@ -1,6 +1,6 @@
 # Readme
 
-[alte readme](./README.md)
+[alte readme](./OLDREADME.md)
 
 ## Docker container
 ```bash
