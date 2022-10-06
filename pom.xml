@@ -23,4 +23,20 @@
 		<module>backend</module>
 	</modules>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.passay</groupId>
+				<artifactId>passay</artifactId>
+				<version>1.6.1</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt</artifactId>
+				<version>0.9.1</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 </project>
