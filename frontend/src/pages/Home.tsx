@@ -19,7 +19,7 @@ export default function Home() {
             .catch(err => {
                 defaultApiResponseChecks(err);
             });
-    }, [])
+    }, [defaultApiResponseChecks])
 
     useEffect(()=>{
         console.log(userInfo)
