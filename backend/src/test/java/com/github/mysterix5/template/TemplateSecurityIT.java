@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class TemplateSecurityIT {
+public class TemplateSecurityIT {
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -46,20 +46,12 @@ class TemplateSecurityIT {
         String token2 = loginResponse.getBody().getToken();
 
         // try to get user info with and without authorization
-        var userInfoResponse = restTemplate.getForEntity("/api/auth/userinfo", Object.class);
+        var userInfoResponse = restTemplate.getForEntity("/api/auth/userinfo", UserInfoDTO.class);
         assertThat(userInfoResponse.getStatusCode()).isEqualTo(HttpStatus.FORBIDDEN);
 
-
-        var ui = restTemplate.getForEntity("/api/auth/userinfo", UserInfoDTO.class);
-        System.out.println(ui);
-
-//        var userInfoResponse2 = restTemplate.exchange("/api/auth/userinfo", HttpMethod.GET, new HttpEntity<>(createHeaders(token1)), UserInfoDTO.class);
-//        assertThat(userInfoResponse2.getStatusCode()).isEqualTo(HttpStatus.OK);
-//        System.out.println(userInfoResponse2.getBody());
-//        System.out.println(userInfoResponse2.getBody().getClass());
-//        UserInfoDTO ui = (UserInfoDTO)userInfoResponse2.getBody();
-//        System.out.println(ui.getClass());
-//        System.out.println(ui);
+        var userInfoResponse2 = restTemplate.exchange("/api/auth/userinfo", HttpMethod.GET, new HttpEntity<>(createHeaders(token1)), UserInfoDTO.class);
+        assertThat(userInfoResponse2.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(userInfoResponse2.getBody().getUsername()).isEqualTo("user1");
     }
 
     private HttpHeaders createHeaders(String jwt) {

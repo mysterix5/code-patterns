@@ -1,10 +1,12 @@
 package com.github.mysterix5.template.model.security;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Data
+@NoArgsConstructor
 public class UserInfoDTO {
     private String username;
     private String id;
