@@ -1,9 +1,5 @@
-# Readme
+# demonstration of some code patterns and other isolated snippets
 
-[alte readme](./OLDREADME.md)
+Implementation in branches
 
-## Docker container
-```bash
-docker build . -t <image name> 
-docker run -p 8090:8080 --name <container name> <image name>
-```
+- observer

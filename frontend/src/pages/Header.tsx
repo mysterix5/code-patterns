@@ -25,7 +25,7 @@ export default function Header() {
                 <Grid item xs={4}>
                     <Grid container justifyContent={'center'}>
                         <Button onClick={() => nav("/")}>
-                            <Typography variant={"h3"}>{process.env.REACT_APP_APPLICATION_NAME}</Typography>
+                            <Typography variant={"h3"}>{process.env.REACT_APP_APPLICATION_NAME} b: {process.env.REACT_APP_BACKEND_URL}</Typography>
                         </Button>
                     </Grid>
                 </Grid>

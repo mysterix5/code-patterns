@@ -31,3 +31,12 @@ export function apiGetUserInfo(){
         createHeaders()
     ).then((response: AxiosResponse) => response.data)
 }
+
+export function apiGetNoRegisteredUsers(){
+    const url = `${process.env.REACT_APP_BACKEND_URL}/api/userstatistics/noreg`;
+    console.log(`get: ${url}`);
+    return axios.get(
+        url,
+        createHeaders()
+    ).then((response: AxiosResponse) => response.data)
+}

@@ -3,11 +3,13 @@ package com.github.mysterix5.template.security;
 import com.github.mysterix5.template.model.error.CustomException;
 import com.github.mysterix5.template.model.security.UserEntity;
 import com.github.mysterix5.template.model.security.UserRegisterDTO;
+import com.github.mysterix5.template.statistics.RegisterEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.passay.PasswordData;
 import org.passay.PasswordValidator;
 import org.passay.RuleResult;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,6 +27,9 @@ public class UserService implements UserDetailsService {
     private final UserMongoRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final PasswordValidator passwordValidator;
+
+
+    private final ApplicationEventPublisher applicationEventPublisher;
 
     public void createUser(UserRegisterDTO userCreationDTO) {
         if (userCreationDTO.getUsername() == null || userCreationDTO.getUsername().isBlank()) {
@@ -50,6 +55,8 @@ public class UserService implements UserDetailsService {
         user.setPassword(passwordEncoder.encode(userCreationDTO.getPassword()));
         user.addRole("user");
         userRepository.save(user);
+
+        applicationEventPublisher.publishEvent(new RegisterEvent(this));
     }
 
     @Override
